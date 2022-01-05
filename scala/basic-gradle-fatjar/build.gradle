@@ -2,21 +2,26 @@ apply plugin: 'idea'
 apply plugin: 'scala'
 
 buildscript {
-	repositories { jcenter() }
+	repositories { 
+            jcenter() 
+            maven {
+                  url "https://plugins.gradle.org/m2/"
+            }
+        }
 	dependencies {
-	classpath 'com.github.jengelman.gradle.plugins:shadow:1.2.3'
+            classpath "gradle.plugin.com.github.johnrengelman:shadow:7.1.2"
 	}
 }
 
 repositories {
-	   mavenLocal()
+        mavenLocal()
 	mavenCentral()
 	jcenter()
 }
 
 dependencies {
-	compile "org.scala-lang:scala-library:2.11.7"
-	compile "org.scala-lang:scala-reflect:2.11.7"
+	//implementation "org.scala-lang:scala-library:2.12.4"
+	//implementation "org.scala-lang:scala-reflect:2.12.4"
 }
 
 project(':basic') {
@@ -29,11 +34,11 @@ project(':basic') {
 	apply plugin: 'scala'
 	apply plugin: 'com.github.johnrengelman.shadow'
 	dependencies {
-		compile "org.scala-lang:scala-library:2.11.7"
-		compile "org.scala-lang:scala-reflect:2.11.7"
-//		compile "org.apache.curator:curator-client:2.8.0"
-//		compile "org.apache.curator:curator-framework:2.8.0"
-//		compile "org.apache.curator:curator-recipes:2.8.0"
+		implementation "org.scala-lang:scala-library:2.12.4"
+		implementation "org.scala-lang:scala-reflect:2.12.4"
+//		implementation "org.apache.curator:curator-client:2.8.0"
+//		implementation "org.apache.curator:curator-framework:2.8.0"
+//		implementation "org.apache.curator:curator-recipes:2.8.0"
 	}
 	tasks.withType(Jar) {
 		manifest {
